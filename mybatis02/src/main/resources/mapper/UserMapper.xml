@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+<mapper namespace="UserMapper">
+	<!-- 插入语句定义 -->
+	<insert id="addUser" parameterType="com.liantao.pojo.User">
+		INSERT INTO 
+		t_user(user_name,password,name,age,sex,birthday,created,updated)
+		VALUES
+		(
+		#{userName},
+		#{password},
+		#{name},#{age},
+		#{sex},
+		#{birthday},
+		NOW(),NOW());
+	</insert>
+	<!-- 删除语句定义 -->
+	<delete id="deleteUserById">
+		delete from t_user where id = #{id}
+	</delete>
+	<!-- 修改语句定义 -->
+	<update id="updateUser">
+		UPDATE t_user
+		SET
+		user_name = #{userName},
+		password = #{password},
+		name = #{name},
+		age = #{age},
+		sex = #{sex},
+		birthday = #{birthday},
+		updated = NOW()
+		WHERE
+		(id = #{id});
+	</update>
+	<!-- 查询 id 标识（唯一） resultType结果集映射的java对象类型 -->
+	<select id="findUserById" resultType="com.liantao.pojo.User">
+		select * ,user_name as username from t_user where id = #{id}
+	</select>
+	<select id="findUserByNameAndPwd" resultType="com.liantao.pojo.User">
+		select * ,user_name as username from t_user  
+		where user_name = #{userName} and password = #{password}
+	</select>
+	<select id="findUserAll" resultType="com.liantao.pojo.User">
+		select *,user_name as username from t_user
+	</select>
+</mapper>
