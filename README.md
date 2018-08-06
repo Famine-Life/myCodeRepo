@@ -4,7 +4,7 @@
 
 **mybatis:**
 
-  [mybatis01](https://github.com/Famine-Life/myCodeRepo/mybatis01){:target="_blank"}
+  [mybatis01](https://github.com/Famine-Life/myCodeRepo/mybatis01)
   
 **Spring:**
 
